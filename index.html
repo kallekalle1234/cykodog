@@ -153,8 +153,6 @@
         'Arms Warrior': 0,
         'Protection Warrior': 0
     };
-    updateBuffs();
-    updateClassOptions();
 
     // Objekt for å holde styr på spesifikke klasser valg som shouts og blessings
     let classChoices = {};
@@ -278,8 +276,8 @@
     }
 
             function updateBuffs() {
-                $("#buff-list li").css("color", "red"); // Reset color
-                $("#debuff-list li").css("color", "red");
+                $('#buff-list li').css('color', ''); // Reset color
+                $("#debuff-list li").css("color", "");
 
                 $('.raid-slot').each(function() {
                     const classInSlot = $(this).data('class');
@@ -522,7 +520,6 @@
     if (classChoices[choice] === 'Flametongue Totem' && choice.includes('fire')) {
         $('#buff-spellpwr2').css('color', 'green'); // Anta at dette representerer en økning i spell power
     }
-    
 });
                           
                     // Add conditions for other classes and buffs
