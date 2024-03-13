@@ -5,7 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         body { display: flex; justify-content: space-between; }
-        #raid-container { width: 60%; }
+        #raid-container { width: 44%; }
         .class-container { 
             width: 100px; 
             height: 50px; 
@@ -101,6 +101,7 @@
     </div>
 
     <div id="buff-list">
+        <h3>Buffs</h3>
         <li id="buff-atkspeed">+10% Melee Speed</li>
             <li id="buff-crit">+5% Crit</li>
             <li id="buff-atkpwr">+10% Attack Power</li>
@@ -116,13 +117,18 @@
             <li id="buff-majorhaste">Major Haste buff</li>
             <li id="buff-armor">+Armor</li>
             <li id="buff-manaregenminor">Minor mana replenishment</li>
-            <li id="buff-spellres">Spell Resistances</li>
+            <li id="buff-spellres">Minor Spell Resistance</li>
+            <li id="buff-fireres">Fire Resistance</li>
+            <li id="buff-shadowres">Shadow Resistance</li>
+            <li id="buff-frostres">Frost Resistance</li>
+            <li id="buff-natureres">Nature Resistance</li>
             <li id="buff-spellpushback">Spell Pushback Resist</li>
             <li id="buff-manaregenmajor">Major Mana Replenishment</li>
             <li id="buff-mp5">+MP5</li>
     </div>
 
     <div id="debuff-list">
+        <h3>Debuffs</h3>
         <li id="debuff-armor">Armor Debuff</li>
         <li id="debuff-bleed">+30% bleed damage</li>
         <li id="debuff-spellcrit">+5% crit for spells only</li>
@@ -403,14 +409,17 @@
                         $('#buff-manaregenminor').css('color', 'green');
                         $('#buff-manaregenmajor').css('color', 'green');
                         $('#debuff-healing').css('color', 'green');
+                        $('#buff-shadowres').css('color', 'green');
                     }
                     if (classInSlot === 'Holy Priest') {
                         $('#buff-stamina').css('color', 'green');
                         $('#buff-manaregenmajor').css('color', 'green');
+                        $('#buff-shadowres').css('color', 'green');
                     }
                     if (classInSlot === 'Disc Priest') {
                         $('#buff-stamina').css('color', 'green');
                         $('#buff-manaregenmajor').css('color', 'green');
+                        $('#buff-shadowres').css('color', 'green');
                     }
                     if (classInSlot === 'Arms Warrior') {
                         $('#debuff-armor').css('color', 'green');
@@ -484,12 +493,15 @@
         $('#buff-mp5').css('color', 'green');
     } else if (classChoices[choice] === 'Blessing of Kings' && choice.startsWith(classInSlot.replace(' ', '-'))) {
         $('#buff-allstats').css('color', 'green');
+        $('#buff-spellres').css('color', 'green');
     }
     //PALADIN
     if (classChoices[choice] === 'Devotion Aura' && choice.startsWith(classInSlot.replace(' ', '-'))) {
         $('#buff-armor').css('color', 'green');
     } else if (classChoices[choice] === 'Resistance Aura' && choice.startsWith(classInSlot.replace(' ', '-'))) {
-        $('#buff-spellres').css('color', 'green');
+        $('#buff-shadowres').css('color', 'green');
+        $('#buff-natureres').css('color', 'green');
+        $('#buff-frostres').css('color', 'green');
     } else if (classChoices[choice] === 'Concentration Aura' && choice.startsWith(classInSlot.replace(' ', '-'))) {
         $('#buff-spellpushback').css('color', 'green');
     }
@@ -514,7 +526,9 @@
     } else if (classChoices[choice] === 'Mana Spring Totem' && choice.includes('water')) {
         $('#buff-mp5').css('color', 'green');
     } else if (classChoices[choice] === 'Elemental Resistance Totem' && choice.includes('water')) {
-        $('#buff-spellres').css('color', 'green');
+        $('#buff-fireres').css('color', 'green');
+        $('#buff-natureres').css('color', 'green');
+        $('#buff-frostres').css('color', 'green');
     }
 
     // Sjekker og håndterer Fire Totem valg
