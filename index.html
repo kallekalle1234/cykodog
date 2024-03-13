@@ -142,6 +142,7 @@
 
     <script>
         $(function() {
+            updateBuffs()
     let classCount = {
         'Enhancement Shaman': 0,
         'Elemental Shaman': 0,
@@ -276,8 +277,8 @@
     }
 
             function updateBuffs() {
-                $('#buff-list li').css('color', ''); // Reset color
-                $("#debuff-list li").css("color", "");
+                $("#buff-list li").css("color", "red"); // Reset color
+                $("#debuff-list li").css("color", "red");
 
                 $('.raid-slot').each(function() {
                     const classInSlot = $(this).data('class');
