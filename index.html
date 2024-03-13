@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { display: flex; justify-content: space-between; }
+        #raid-container { width: 60%; }
+        .class-container { 
+            width: 100px; 
+            height: 50px; 
+            padding: 5px; 
+            border: 1px solid #000; 
+            float: left; 
+            cursor: pointer; 
+            box-sizing: border-box; 
+            margin: 2px;
+        }
+        .raid-slot { 
+            width: 120px; 
+            height: 50px; 
+            margin: 10px; 
+            padding: 5px; 
+            border: 2px dashed #000; 
+            float: left; 
+            position: relative;
+            text-align: center;
+            line-height: 50px;
+        }
+        .class-container-cloned { 
+            position: relative; 
+            top: 0; 
+            left: 0; 
+            width: auto; 
+            height: auto; 
+            margin: 0; 
+            line-height: normal;
+        }
+        .clear { clear: both; }
+        #buff-debuff-container { display: flex; margin-left: 20px; }
+        #buff-list, #debuff-list { width: 220px; padding: 20px; }
+        ul { list-style-type: none; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div id="raid-container">
+        <div id="classes">
+            <!-- Shaman -->
+    <div class="class-container" data-class="Elemental Shaman">Elemental Shaman</div>
+    <div class="class-container" data-class="Enhancement Shaman">Enhancement Shaman</div>
+    <div class="class-container" data-class="Restoration Shaman">Restoration Shaman</div>
+    
+    <!-- Death Knight -->
+    <div class="class-container" data-class="Frost Death Knight">Frost Death Knight</div>
+    <div class="class-container" data-class="Blood Death Knight">Blood Death Knight</div>
+    <div class="class-container" data-class="Unholy Death Knight">Unholy Death Knight</div>
+    
+    <!-- Druid -->
+    <div class="class-container" data-class="Balance Druid">Balance Druid</div>
+    <div class="class-container" data-class="Feral Druid Tank">Feral Druid Tank</div>
+    <div class="class-container" data-class="Feral Druid DPS">Feral Druid DPS</div>
+    <div class="class-container" data-class="Restoration Druid">Restoration Druid</div>
+    
+    <!-- Warlock -->
+    <div class="class-container" data-class="Affliction Warlock">Affliction Warlock</div>
+    <div class="class-container" data-class="Demonology Warlock">Demonology Warlock</div>
+    <div class="class-container" data-class="Destruction Warlock">Destruction Warlock</div>
+    
+    <!-- Hunter -->
+    <div class="class-container" data-class="Survival Hunter">Survival Hunter</div>
+    <div class="class-container" data-class="Marksman Hunter">Marksman Hunter</div>
+    <div class="class-container" data-class="Beastmaster Hunter">Beastmaster Hunter</div>
+    
+    <!-- Mage -->
+    <div class="class-container" data-class="Fire Mage">Fire Mage</div>
+    <div class="class-container" data-class="Arcane Mage">Arcane Mage</div>
+    <div class="class-container" data-class="Frost Mage">Frost Mage</div>
+    
+    <!-- Priest -->
+    <div class="class-container" data-class="Shadow Priest">Shadow Priest</div>
+    <div class="class-container" data-class="Holy Priest">Holy Priest</div>
+    <div class="class-container" data-class="Disc Priest">Disc Priest</div>
+    
+    <!-- Warrior -->
+    <div class="class-container" data-class="Arms Warrior">Arms Warrior</div>
+    <div class="class-container" data-class="Fury Warrior">Fury Warrior</div>
+    <div class="class-container" data-class="Protection Warrior">Protection Warrior</div>
+    
+    <!-- Rogue -->
+    <div class="class-container" data-class="Assasination Rogue">Assasination Rogue</div>
+    <div class="class-container" data-class="Combat Rogue">Combat Rogue</div>
+    <div class="class-container" data-class="Subtlety Rogue">Subtlety Rogue</div>
+    
+    <!-- Paladin -->
+    <div class="class-container" data-class="Protection Paladin">Protection Paladin</div>
+    <div class="class-container" data-class="Retribution Paladin">Retribution Paladin</div>
+    <div class="class-container" data-class="Holy Paladin">Holy Paladin</div>
+            
+        </div>
+        <div class="clear"></div>
+        <div id="raid-slots"></div>
+    </div>
+    
+    <div id="buff-list">
+        <h2>BUFFS</h2>
+        <ul>
+            <li id="buff-atkspeed">+10% Melee Speed</li>
+            <li id="buff-crit">+5% Crit</li>
+            <li id="buff-atkpwr">+10% Attack Power</li>
+            <li id="buff-spellhaste">+5% Spell Haste</li>
+            <li id="buff-spellpwr">+10% Spell Power</li>
+            <li id="buff-spellpwr2">+6% Spell Power</li>
+            <li id="buff-alldmg">+3% to all damage</li>
+            <li id="buff-allstats">+5% to all base stats</li>
+            <li id="buff-stragil">+Strength and Agility</li>
+            <li id="buff-stamina">+Stamina</li>
+            <li id="buff-maxmana">+Max Mana</li>
+            <li id="buff-combatres">Combat Resurrection</li>
+            <li id="buff-majorhaste">Major Haste buff</li>
+            <li id="buff-armor">+Armor</li>
+            <li id="buff-manaregenminor">Minor mana replenishment</li>
+            <li id="buff-spellres">Spell Resistances</li>
+            <li id="buff-spellpushback">Spell Pushback Resist</li>
+            <li id="buff-manaregenmajor">Major Mana Replenishment</li>
+            <li id="buff-mp5">+MP5</li>
+            <!-- Add more buffs as needed -->
+        </ul>
+    </div>
+
+    <div id="debuff-list">
+        <h2>DEBUFFS</h2>
+        <ul>
+            <li id="debuff-armor">Armor Debuff</li>
+        <li id="debuff-bleed">+30% bleed damage</li>
+        <li id="debuff-spellcrit">+5% crit for spells only</li>
+        <li id="debuff-melee-haste">-20% melee haste debuff</li>
+        <li id="debuff-magic-dmg">+8% magic damage debuff</li>
+        <li id="debuff-phys-dmg">+4% physical damage debuff</li>
+        <li id="debuff-healing">Healing Debuff</li>
+        <li id="debuff-phys-output">-10% physical damage output debuff</li>
+        <li id="debuff-castspeed">Cast Speed debuff</li>
+        </ul>
+    </div>
+
+    <script>
+        $(function() {
+            for (let i = 1; i <= 25; i++) {
+                let slot = $('<div class="raid-slot">' + i + '</div>').click(function() {
+                    if ($(this).data('class')) {
+                        $(this).removeData('class').empty().append(i);
+                        updateBuffs();
+                    }
+                });
+                $('#raid-slots').append(slot);
+            }
+
+            $(".class-container").click(function() {
+                const classToAdd = $(this).data('class');
+                let added = false;
+
+                $('.raid-slot').each(function() {
+                    if (!$(this).data('class') && !added) {
+                        $(this).data('class', classToAdd).empty().append($('<div>').addClass('class-container-cloned').text(classToAdd));
+                        added = true;
+                        updateBuffs();
+                    }
+                });
+            });
+
+            function updateBuffs() {
+                $('#buff-list li').css('color', ''); // Reset color
+                $("#debuff-list li").css("color", "");
+
+                $('.raid-slot').each(function() {
+                    const classInSlot = $(this).data('class');
+                    if (classInSlot === 'Feral Druid Tank') {
+                        $('#buff-crit').css('color', 'green');
+                        $('#buff-allstats').css('color', 'green');
+                        $('#buff-combatres').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-manaregenmajor').css('color', 'green');
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-bleed').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                    }
+                    if (classInSlot === 'Feral Druid DPS') {
+                        $('#buff-crit').css('color', 'green');
+                        $('#buff-allstats').css('color', 'green');
+                        $('#buff-combatres').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-manaregenmajor').css('color', 'green');
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-bleed').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                    }
+                    if (classInSlot === 'Balance Druid') {
+                        $('#buff-allstats').css('color', 'green');
+                        $('#buff-combatres').css('color', 'green');
+                        $('#buff-spellhaste').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-manaregenmajor').css('color', 'green');
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-magic-dmg').css('color', 'green');
+                    }
+                    if (classInSlot === 'Restoration Druid') {
+                        $('#buff-allstats').css('color', 'green');
+                        $('#buff-combatres').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-manaregenmajor').css('color', 'green');
+                        $('#debuff-armor').css('color', 'green');
+                    }
+                    if (classInSlot === 'Frost Death Knight') {
+                        $('#buff-atkspeed').css('color', 'green');
+                        $('#buff-stragil').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                        $('#debuff-phys-dmg').css('color', 'green');
+                        
+                    }
+                    if (classInSlot === 'Unholy Death Knight') {
+                        $('#buff-stragil').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                        $('#debuff-magic-dmg').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                    }
+                    if (classInSlot === 'Blood Death Knight') {
+                        $('#buff-atkpwr').css('color', 'green');
+                        $('#buff-stragil').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                    }
+                    if (classInSlot === 'Affliction Warlock') {
+                        $('#buff-maxmana').css('color', 'green');
+                        $('#buff-combatres').css('color', 'green');
+                        $('#buff-mp5').css('color', 'green');
+                        $('#debuff-magic-dmg').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');  
+                    }
+                    if (classInSlot === 'Demonology Warlock') {
+                        $('#buff-spellpwr').css('color', 'green');
+                        $('#buff-combatres').css('color', 'green');
+                        $('#debuff-magic-dmg').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                    }
+                    if (classInSlot === 'Destruction Warlock') {
+                        $('#buff-stamina').css('color', 'green');
+                        $('#buff-combatres').css('color', 'green');
+                        $('#buff-manaregenminor').css('color', 'green');
+                        $('#debuff-spellcrit').css('color', 'green');
+                        $('#debuff-magic-dmg').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                    }
+                    if (classInSlot === 'Survival Hunter') {
+                        $('#buff-atkspeed').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                    }
+                    if (classInSlot === 'Marksman Hunter') {
+                        $('#buff-atkpwr').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                    }
+                    if (classInSlot === 'Beastmaster Hunter') {
+                        $('#buff-alldmg').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                    }
+                    if (classInSlot === 'Fire Mage') {
+                        $('#buff-spellpwr2').css('color', 'green');
+                        $('#buff-maxmana').css('color', 'green');
+                        $('#buff-majorhaste').css('color', 'green');
+                        $('#debuff-spellcrit').css('color', 'green');
+                    }
+                    if (classInSlot === 'Arcane Mage') {
+                        $('#buff-spellpwr2').css('color', 'green');
+                        $('#buff-alldmg').css('color', 'green');
+                        $('#buff-maxmana').css('color', 'green');
+                        $('#buff-majorhaste').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                    }
+                    if (classInSlot === 'Frost Mage') {
+                        $('#buff-spellpwr2').css('color', 'green');
+                        $('#buff-maxmana').css('color', 'green');
+                        $('#buff-majorhaste').css('color', 'green');
+                        $('#buff-manaregenminor').css('color', 'green');
+                    }
+                    if (classInSlot === 'Shadow Priest') {
+                        $('#buff-spellhaste').css('color', 'green');
+                        $('#buff-stamina').css('color', 'green');
+                        $('#buff-manaregenminor').css('color', 'green');
+                        $('#buff-manaregenmajor').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                    }
+                    if (classInSlot === 'Holy Priest') {
+                        $('#buff-stamina').css('color', 'green');
+                        $('#buff-manaregenmajor').css('color', 'green');
+                    }
+                    if (classInSlot === 'Disc Priest') {
+                        $('#buff-stamina').css('color', 'green');
+                        $('#buff-manaregenmajor').css('color', 'green');
+                    }
+                    if (classInSlot === 'Arms Warrior') {
+                        $('#buff-stragil').css('color', 'green');
+                        $('#buff-stamina').css('color', 'green');
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-bleed').css('color', 'green');
+                        $('#debuff-phys-dmg').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                    }
+                    if (classInSlot === 'Protection Warrior') {
+                        $('#buff-stragil').css('color', 'green');
+                        $('#buff-stamina').css('color', 'green');
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                    }
+                    if (classInSlot === 'Fury Warrior') {
+                        $('#buff-crit').css('color', 'green');
+                        $('#buff-stragil').css('color', 'green');
+                        $('#buff-stamina').css('color', 'green');
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                    }
+                    if (classInSlot === 'Assasination Rogue') {
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-magic-dmg').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                    }
+                    if (classInSlot === 'Combat Rogue') {
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-phys-dmg').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                    }
+                    if (classInSlot === 'Subtlety Rogue') {
+                        $('#buff-crit').css('color', 'green');
+                        $('#debuff-armor').css('color', 'green');
+                        $('#debuff-bleed').css('color', 'green');
+                        $('#debuff-healing').css('color', 'green');
+                        $('#debuff-castspeed').css('color', 'green');
+                    }
+                    if (classInSlot === 'Protection Paladin') {
+                        $('#buff-atkpwr').css('color', 'green');
+                        $('#buff-allstats').css('color', 'green');
+                        $('#buff-armor').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-spellpushback').css('color', 'green');
+                        $('#buff-mp5').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                        $('#debuff-phys-output').css('color', 'green');
+                    }
+                    if (classInSlot === 'Retribution Paladin') {
+                        $('#buff-atkpwr').css('color', 'green');
+                        $('#buff-alldmg').css('color', 'green');
+                        $('#buff-allstats').css('color', 'green');
+                        $('#buff-armor').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-spellpushback').css('color', 'green');
+                        $('#buff-manaregenminor').css('color', 'green');
+                        $('#buff-mp5').css('color', 'green');
+                        
+                    }
+                    if (classInSlot === 'Holy Paladin') {
+                        $('#buff-atkpwr').css('color', 'green');
+                        $('#buff-allstats').css('color', 'green');
+                        $('#buff-armor').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-spellpushback').css('color', 'green');
+                        $('#buff-mp5').css('color', 'green');
+                    }
+                    if (classInSlot === 'Elemental Shaman') {    
+                        $('#buff-atkspeed').css('color', 'green');  
+                        $('#buff-crit').css('color', 'green');     
+                        $('#buff-spellhaste').css('color', 'green');  
+                        $('#buff-spellpwr').css('color', 'green'); 
+                        $('#buff-spellpwr2').css('color', 'green');
+                        $('#buff-stragil').css('color', 'green');
+                        $('#buff-majorhaste').css('color', 'green');
+                        $('#buff-armor').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-spellpushback').css('color', 'green');
+                        $('#buff-mp5').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                    }
+                    if (classInSlot === 'Enhancement Shaman') {   
+                        $('#buff-atkpwr').css('color', 'green');
+                        $('#buff-atkspeed').css('color', 'green'); 
+                        $('#buff-spellhaste').css('color', 'green');     
+                        $('#buff-spellpwr2').css('color', 'green');       
+                        $('#buff-stragil').css('color', 'green');       
+                        $('#buff-majorhaste').css('color', 'green');
+                        $('#buff-armor').css('color', 'green');
+                        $('#buff-spellres').css('color', 'green');
+                        $('#buff-spellpushback').css('color', 'green');
+                        $('#buff-mp5').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                    }
+                    if (classInSlot === 'Restoration Shaman') {    
+                        $('#buff-atkspeed').css('color', 'green');  
+                        $('#buff-spellhaste').css('color', 'green');
+                        $('#buff-spellpwr2').css('color', 'green');    
+                        $('#buff-stragil').css('color', 'green');  
+                        $('#buff-majorhaste').css('color', 'green');  
+                        $('#buff-armor').css('color', 'green');        
+                        $('#buff-spellres').css('color', 'green'); 
+                        $('#buff-spellpushback').css('color', 'green');
+                        $('#buff-mp5').css('color', 'green');
+                        $('#debuff-melee-haste').css('color', 'green');
+                    }
+                    
+
+
+                    
+                    // Add conditions for other classes and buffs
+                });
+            }
+        });
+    </script>
+</body>
+</html>
