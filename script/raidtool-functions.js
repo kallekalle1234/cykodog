@@ -15,6 +15,7 @@ $(function () {
         'Beastmaster Hunter': 0
 
     };
+    
 
     // Objekt for å holde styr på spesifikke klasser valg som shouts og blessings
     let classChoices = {};
