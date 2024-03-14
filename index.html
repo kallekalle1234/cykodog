@@ -81,6 +81,29 @@
         body {
             padding-top: 65px;
         }
+
+        /* Media query for mobile devices */
+@media (max-width: 768px) {
+  #raid-container {
+    width: 100%;
+    margin: 0;
+    padding: 0 2px; /* Juster padding for å ikke presse innholdet for mye mot kantene */
+  }
+
+  .class-container, .raid-slot {
+    width: 100px; /* Tilpass bredde basert på skjermstørrelsen */
+    height: 45px; /* Tilpass høyden basert på skjermstørrelsen */
+    margin: 5px 0; /* Øk mellomrom mellom elementene for bedre lesbarhet */
+  }
+
+  #buff-list, #debuff-list, #class-options-list {
+    width: 100%; /* Gjør disse elementene full bredde */
+    margin-left: 0; /* Fjern margin til venstre for å sentrere innholdet */
+    padding: 10px 0; /* Tilføy padding for bedre lesbarhet */
+  }
+
+  
+}
     </style>
 </head>
 
