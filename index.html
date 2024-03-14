@@ -189,7 +189,11 @@
                 'Protection Paladin': 0,
                 'Fury Warrior': 0,
                 'Arms Warrior': 0,
-                'Protection Warrior': 0
+                'Protection Warrior': 0,
+                'Marksman Hunter': 0,
+                'Survival Hunter': 0,
+                'Beastmaster Hunter': 0
+
             };
 
             // Objekt for å holde styr på spesifikke klasser valg som shouts og blessings
@@ -254,10 +258,39 @@
                             addPaladinOptions(key, i);
                         } else if (key.includes('Warrior')) {
                             addWarriorOptions(key, i);
+                        } else if (key.includes('Hunter')) {
+                            addHunterOptions(key, i);
                         }
                     }
                 });
             }
+
+            function addHunterOptions(className, index) {
+                let hunterId = className.replace(' ', '-') + '-' + index;
+                let optionsHtml = `<div>${className} ${index + 1} Pets:</div>`;
+            optionsHtml += `<select class="hunter-pet" data-hunter-id="${hunterId}">
+                        <option value="">Select Pet</option>
+                        <option value="Wolf">Wolf 5% Crit Buff</option>
+                        <option value="Cat">Cat Strength and Agility Buff</option>
+                        <option value="Serpent">Serpent/Raptor Armor Debuff</option>
+                        <option value="Bear">Bear/Carrion Bird -10% physical damage output debuff</option>
+                        <option value="Tallstrider">Tallstrider/Fox -20% melee haste debuff</option>
+                        <option value="Dragonhawk">Dragonhawk/Wind Serpent +8% magic damage debuff</option>
+                        <option value="Ravager">Ravager +4% physical damage debuff</option>
+                        <option value="Sporebat">Sporebat Cast Speed debuff</option>
+                        <option value="Hyena">Hyena +30% bleed damage debuff</option>
+                    </select><br>`;
+    $('#class-options-list').append(optionsHtml);
+
+    // Legg til event listener for å oppdatere classChoices når et pet er valgt
+    $(`.hunter-pet[data-hunter-id="${hunterId}"]`).change(function() {
+        let petChoice = $(this).val();
+        classChoices[hunterId + '-pet'] = petChoice;
+        console.log('Updated classChoices:', classChoices); // For feilsøking
+        updateBuffs(); // Oppdater buffs basert på valgt pet, hvis nødvendig
+    });
+}
+            
 
             function addShamanOptions(className, index) {
                 let shamanId = className.replace(' ', '-') + '-' + index; // Unik ID for hver Shaman
@@ -590,6 +623,27 @@
                         if (classChoices[choice] === 'Flametongue Totem' && choice.startsWith(classInSlot.replace(' ', '-'))) {
                             $('#buff-spellpwr2').css('color', 'green'); // Anta at dette representerer en økning i spell power
                         }
+
+                        // Hunterpets
+                        if (classChoices[choice] === 'Wolf' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#buff-crit').css('color', 'green');
+                        } else if (classChoices[choice] === 'Cat' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#buff-stragil').css('color', 'green');
+                        } else if (classChoices[choice] === 'Serpent' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#debuff-armor').css('color', 'green');
+                        } else if (classChoices[choice] === 'Bear' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#debuff-phys-output').css('color', 'green');
+                        } else if (classChoices[choice] === 'Tallstrider' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#debuff-melee-haste').css('color', 'green');
+                        } else if (classChoices[choice] === 'Dragonhawk' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#debuff-magic-dmg').css('color', 'green');
+                        } else if (classChoices[choice] === 'Ravager' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#debuff-phys-dmg').css('color', 'green');
+                        } else if (classChoices[choice] === 'Sporebat' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#debuff-castspeed').css('color', 'green');
+                        } else if (classChoices[choice] === 'Hyena' && choice.startsWith(classInSlot.replace(' ', '-'))) {
+                            $('#debuff-bleed').css('color', 'green');
+                        } 
                     });
 
                     // Add conditions for other classes and buffs
