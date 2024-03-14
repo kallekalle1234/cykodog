@@ -198,18 +198,7 @@ $(function () {
 
         $('.raid-slot').each(function () {
             const classInSlot = $(this).data('class');
-            if (classInSlot === 'Feral Druid Tank') {
-                $('#buff-crit').css('color', 'green');
-                $('#buff-allstats').css('color', 'green');
-                $('#buff-combatres').css('color', 'green');
-                $('#buff-spellres').css('color', 'green');
-                $('#buff-manaregenmajor').css('color', 'green');
-                $('#debuff-armor').css('color', 'green');
-                $('#debuff-bleed').css('color', 'green');
-                $('#debuff-melee-haste').css('color', 'green');
-                $('#debuff-phys-output').css('color', 'green');
-            }
-            if (classInSlot === 'Feral Druid DPS') {
+            if (classInSlot === 'Feral Druid') {
                 $('#buff-crit').css('color', 'green');
                 $('#buff-allstats').css('color', 'green');
                 $('#buff-combatres').css('color', 'green');
