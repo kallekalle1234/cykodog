@@ -1,0 +1,62 @@
+#raid-container {
+    width: 44%;
+    background-color: #333;
+    margin: 0 14px;
+}
+
+.class-container {
+    width: 120px;
+    height: 50px;
+    padding: 5px;
+    border: 1px solid #fff;
+    float: left;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 2px;
+    background-color: #555;
+    /* Lysere grå for kontrast */
+    color: white;
+    /* For bedre lesbarhet */
+}
+
+.class-container:hover,
+.raid-slot:hover {
+    background-color: #777;
+    /* Litt lysere for hover-effekt */
+}
+
+.raid-slot {
+    display: flex;
+    /* Gjør raid-slot til en flex container */
+    align-items: center;
+    /* Senterer barn vertikalt */
+    justify-content: center;
+    /* Senterer barn horisontalt */
+    width: 125px;
+    height: 55px;
+    margin: 10px;
+    padding: 0px;
+    border: 2px dashed #000;
+    float: left;
+    position: relative;
+    text-align: center;
+
+}
+
+.class-container-cloned {
+    width: 100%;
+    /* Fyller hele bredden til forelderen */
+    height: 100%;
+    /* Fyller hele høyden til forelderen */
+    margin: 0;
+    display: flex;
+    /* Gjør dette også til en flex container */
+    align-items: center;
+    /* Senterer tekst vertikalt */
+    justify-content: center;
+    /* Senterer tekst horisontalt */
+    flex-direction: column;
+    /* Orienterer barn (tekstlinjer) vertikalt */
+    color: black;
+    /* Endrer tekstfarge til svart */
+}
