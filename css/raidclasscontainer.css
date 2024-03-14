@@ -15,14 +15,24 @@
     margin: 2px;
     background-color: #555;
     /* Lysere grå for kontrast */
-    color: white;
+    color: rgb(0, 0, 0);
     /* For bedre lesbarhet */
+    float: left;
+    position: relative;
+    text-align: center;
+    display: flex;
+    /* Gjør raid-slot til en flex container */
+    align-items: center;
+    /* Senterer barn vertikalt */
+    justify-content: center;
+    /* Senterer barn horisontalt */
     
 }
 
 .class-container:hover,
 .raid-slot:hover {
-    background-color: #777;
+    background-color: #838181;
+    color:#000
     /* Litt lysere for hover-effekt */
 }
 
