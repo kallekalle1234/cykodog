@@ -12,14 +12,16 @@
             display: flex;
             justify-content: space-between;
             margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #333; /* Samme farge som menyen */
-    color: white; /* Endre tekstfarge for bedre lesbarhet */
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            /* Samme farge som menyen */
+            color: white;
+            /* Endre tekstfarge for bedre lesbarhet */
         }
 
         #raid-container {
-            width:44%;
+            width: 44%;
             background-color: #333;
         }
 
@@ -32,14 +34,25 @@
             cursor: pointer;
             box-sizing: border-box;
             margin: 2px;
-            background-color: #555; /* Lysere grå for kontrast */
-    color: white; /* For bedre lesbarhet */
+            background-color: #555;
+            /* Lysere grå for kontrast */
+            color: white;
+            /* For bedre lesbarhet */
         }
-        .class-container:hover, .raid-slot:hover {
-    background-color: #777; /* Litt lysere for hover-effekt */
-}
+
+        .class-container:hover,
+        .raid-slot:hover {
+            background-color: #777;
+            /* Litt lysere for hover-effekt */
+        }
 
         .raid-slot {
+            display: flex;
+            /* Gjør raid-slot til en flex container */
+            align-items: center;
+            /* Senterer barn vertikalt */
+            justify-content: center;
+            /* Senterer barn horisontalt */
             width: 125px;
             height: 55px;
             margin: 10px;
@@ -48,18 +61,25 @@
             float: left;
             position: relative;
             text-align: center;
-            line-height: 50px;
-            
+
         }
 
         .class-container-cloned {
-            
-            
             width: 100%;
-    height: 100%;
+            /* Fyller hele bredden til forelderen */
+            height: 100%;
+            /* Fyller hele høyden til forelderen */
             margin: 0;
-            line-height: normal;
-            
+            display: flex;
+            /* Gjør dette også til en flex container */
+            align-items: center;
+            /* Senterer tekst vertikalt */
+            justify-content: center;
+            /* Senterer tekst horisontalt */
+            flex-direction: column;
+            /* Orienterer barn (tekstlinjer) vertikalt */
+            color: black;
+            /* Endrer tekstfarge til svart */
         }
 
         .clear {
@@ -78,9 +98,12 @@
             width: 220px;
             padding: 20px;
         }
-        #buff-list li, #debuff-list li {
-    color: white; /* Endre fargen på listeelementene for lesbarhet */
-}
+
+        #buff-list li,
+        #debuff-list li {
+            color: white;
+            /* Endre fargen på listeelementene for lesbarhet */
+        }
 
         ul {
             list-style-type: none;
@@ -89,12 +112,14 @@
         li {
             margin-bottom: 10px;
         }
-        body, html {
+
+        body,
+        html {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
         }
-        
+
         .top-menu {
             background-color: #333;
             position: fixed;
@@ -131,10 +156,163 @@
         body {
             padding-top: 90px;
         }
-        
-        .elemental-shaman { background-color: #0070DE; } /* Shaman */
 
-        
+        /* raidslot farger etter class */
+        .elemental-shaman {
+            background-color: #0070DE;
+        }
+
+        /* Shaman */
+        .restoration-shaman {
+            background-color: #0070DE;
+        }
+
+        /* Shaman */
+        .enhancement-shaman {
+            background-color: #0070DE;
+        }
+
+        /* Shaman */
+        .frost-death-knight {
+            background-color: #C41F3B;
+        }
+
+        /* Death Knight */
+        .blood-death-knight {
+            background-color: #C41F3B;
+        }
+
+        /* Death Knight */
+        .unholy-death-knight {
+            background-color: #C41F3B;
+        }
+
+        /* Death Knight */
+        .feral-druid-tank {
+            background-color: #FF7D0A;
+        }
+
+        /* Druid */
+        .feral-druid-dps {
+            background-color: #FF7D0A;
+        }
+
+        /* Druid */
+        .restoration-druid {
+            background-color: #FF7D0A;
+        }
+
+        /* Druid */
+        .balance-druid {
+            background-color: #FF7D0A;
+        }
+
+        /* Druid */
+        .arms-warrior {
+            background-color: #C79C6E;
+        }
+
+        /* Warrior */
+        .fury-warrior {
+            background-color: #C79C6E;
+        }
+
+        /* Warrior */
+        .protection-warrior {
+            background-color: #C79C6E;
+        }
+
+        /* Warrior */
+        .assassination-rogue {
+            background-color: #FFF569;
+        }
+
+        /* Rogue */
+        .combat-rogue {
+            background-color: #FFF569;
+        }
+
+        /* Rogue */
+        .subtlety-rogue {
+            background-color: #FFF569;
+        }
+
+        /* Rogue */
+        .survival-hunter {
+            background-color: #ABD473;
+        }
+
+        /* Hunter */
+        .marksman-hunter {
+            background-color: #ABD473;
+        }
+
+        /* Hunter */
+        .beastmaster-hunter {
+            background-color: #ABD473;
+        }
+
+        /* Hunter */
+        .frost-mage {
+            background-color: #69CCF0;
+        }
+
+        /* Mage */
+        .arcane-mage {
+            background-color: #69CCF0;
+        }
+
+        /* Mage */
+        .fire-mage {
+            background-color: #69CCF0;
+        }
+
+        /* Mage */
+        .affliction-warlock {
+            background-color: #9482C9;
+        }
+
+        /* Warlock */
+        .destruction-warlock {
+            background-color: #9482C9;
+        }
+
+        /* Warlock */
+        .demonology-warlock {
+            background-color: #9482C9;
+        }
+
+        /* Warlock */
+        .holy-paladin {
+            background-color: #F58CBA;
+        }
+
+        /* Paladin */
+        .protection-paladin {
+            background-color: #F58CBA;
+        }
+
+        /* Paladin */
+        .retribution-paladin {
+            background-color: #F58CBA;
+        }
+
+        /* Paladin */
+        .shadow-priest {
+            background-color: #FFFFFF;
+        }
+
+        /* Priest */
+        .discipline-priest {
+            background-color: #FFFFFF;
+        }
+
+        /* Priest */
+        .holy-priest {
+            background-color: #FFFFFF;
+        }
+
+        /* Priest */
     </style>
 </head>
 
@@ -182,7 +360,7 @@
             <!-- Priest -->
             <div class="class-container" data-class="Shadow Priest">Shadow Priest</div>
             <div class="class-container" data-class="Holy Priest">Holy Priest</div>
-            <div class="class-container" data-class="Disc Priest">Disc Priest</div>
+            <div class="class-container" data-class="Discipline Priest">Discipline Priest</div>
 
             <!-- Warrior -->
             <div class="class-container" data-class="Arms Warrior">Arms Warrior</div>
@@ -190,7 +368,7 @@
             <div class="class-container" data-class="Protection Warrior">Protection Warrior</div>
 
             <!-- Rogue -->
-            <div class="class-container" data-class="Assasination Rogue">Assasination Rogue</div>
+            <div class="class-container" data-class="Assassination Rogue">Assassination Rogue</div>
             <div class="class-container" data-class="Combat Rogue">Combat Rogue</div>
             <div class="class-container" data-class="Subtlety Rogue">Subtlety Rogue</div>
 
@@ -203,7 +381,7 @@
         <div id="raid-slots"></div>
     </div>
 
-    <div id="buff-list"> 
+    <div id="buff-list">
         <h3>Buffs</h3>
         <li id="buff-atkspeed">+10% Melee Speed</li>
         <li id="buff-crit">+5% Crit</li>
@@ -284,40 +462,40 @@
                 }).appendTo('#raid-slots');
             }
 
-            
-    // Funksjon for å fjerne valgene for en klasse fra classChoices
-    function removeClassChoices(className) {
-        Object.keys(classChoices).forEach(function(key) {
-            if (key.startsWith(className.replace(' ', '-'))) {
-                delete classChoices[key];
+
+            // Funksjon for å fjerne valgene for en klasse fra classChoices
+            function removeClassChoices(className) {
+                Object.keys(classChoices).forEach(function (key) {
+                    if (key.startsWith(className.replace(' ', '-'))) {
+                        delete classChoices[key];
+                    }
+                });
+
+                // Oppdater grensesnittet her hvis nødvendig
+                // For eksempel, tilbakestill select-elementene for den aktuelle klassen
+                resetClassInterface(className);
             }
-        });
 
-        // Oppdater grensesnittet her hvis nødvendig
-        // For eksempel, tilbakestill select-elementene for den aktuelle klassen
-        resetClassInterface(className);
-    }
-
-    // Funksjon for å tilbakestille grensesnittet for en spesifikk klasse
-    function resetClassInterface(className) {
-        // Implementer logikken for å tilbakestille grensesnittet her
-        // Dette kan innebære å tilbakestille select-elementer eller andre UI-komponenter
-        // Eksempel:
-        $(`.class-container[data-class="${className}"] select`).val('');
-    }
+            // Funksjon for å tilbakestille grensesnittet for en spesifikk klasse
+            function resetClassInterface(className) {
+                // Implementer logikken for å tilbakestille grensesnittet her
+                // Dette kan innebære å tilbakestille select-elementer eller andre UI-komponenter
+                // Eksempel:
+                $(`.class-container[data-class="${className}"] select`).val('');
+            }
 
             $(".class-container").click(function () {
                 const classToAdd = $(this).data('class');
                 const classSlug = classToAdd.replace(/\s+/g, '-').toLowerCase(); // Konverterer klassenavn til en klasse-slug, f.eks. "Elemental Shaman" til "elemental-shaman"
                 $('.raid-slot').each(function () {
-        if (!$(this).data('class')) {
-            $(this).data('class', classToAdd)
-                   .empty()
-                   .append($('<div>').addClass('class-container-cloned ' + classSlug).text(classToAdd)); // Legger til den spesifikke fargeklassen
-            classCount[classToAdd]++;
-            updateClassOptions();
-            updateBuffs();
-            return false;
+                    if (!$(this).data('class')) {
+                        $(this).data('class', classToAdd)
+                            .empty()
+                            .append($('<div>').addClass('class-container-cloned ' + classSlug).text(classToAdd)); // Legger til den spesifikke fargeklassen
+                        classCount[classToAdd]++;
+                        updateClassOptions();
+                        updateBuffs();
+                        return false;
                     }
                 });
             });
@@ -343,7 +521,7 @@
             function addHunterOptions(className, index) {
                 let hunterId = className.replace(' ', '-') + '-' + index;
                 let optionsHtml = `<div>${className} ${index + 1} Pets:</div>`;
-            optionsHtml += `<select class="hunter-pet" data-hunter-id="${hunterId}">
+                optionsHtml += `<select class="hunter-pet" data-hunter-id="${hunterId}">
                         <option value="">Select Pet</option>
                         <option value="Wolf">Wolf 5% Crit Buff</option>
                         <option value="Cat">Cat Strength and Agility Buff</option>
@@ -355,17 +533,17 @@
                         <option value="Sporebat">Sporebat Cast Speed debuff</option>
                         <option value="Hyena">Hyena +30% bleed damage debuff</option>
                     </select><br>`;
-    $('#class-options-list').append(optionsHtml);
+                $('#class-options-list').append(optionsHtml);
 
-    // Legg til event listener for å oppdatere classChoices når et pet er valgt
-    $(`.hunter-pet[data-hunter-id="${hunterId}"]`).change(function() {
-        let petChoice = $(this).val();
-        classChoices[hunterId + '-pet'] = petChoice;
-        console.log('Updated classChoices:', classChoices); // For feilsøking
-        updateBuffs(); // Oppdater buffs basert på valgt pet, hvis nødvendig
-    });
-}
-            
+                // Legg til event listener for å oppdatere classChoices når et pet er valgt
+                $(`.hunter-pet[data-hunter-id="${hunterId}"]`).change(function () {
+                    let petChoice = $(this).val();
+                    classChoices[hunterId + '-pet'] = petChoice;
+                    console.log('Updated classChoices:', classChoices); // For feilsøking
+                    updateBuffs(); // Oppdater buffs basert på valgt pet, hvis nødvendig
+                });
+            }
+
 
             function addShamanOptions(className, index) {
                 let shamanId = className.replace(' ', '-') + '-' + index; // Unik ID for hver Shaman
@@ -578,7 +756,7 @@
                         $('#buff-manaregenmajor').css('color', 'green');
                         $('#buff-shadowres').css('color', 'green');
                     }
-                    if (classInSlot === 'Disc Priest') {
+                    if (classInSlot === 'Discipline Priest') {
                         $('#buff-stamina').css('color', 'green');
                         $('#buff-manaregenmajor').css('color', 'green');
                         $('#buff-shadowres').css('color', 'green');
@@ -601,7 +779,7 @@
                         $('#debuff-healing').css('color', 'green');
                         $('#debuff-phys-output').css('color', 'green');
                     }
-                    if (classInSlot === 'Assasination Rogue') {
+                    if (classInSlot === 'Assassination Rogue') {
                         $('#debuff-armor').css('color', 'green');
                         $('#debuff-magic-dmg').css('color', 'green');
                         $('#debuff-healing').css('color', 'green');
@@ -718,7 +896,7 @@
                             $('#debuff-castspeed').css('color', 'green');
                         } else if (classChoices[choice] === 'Hyena' && choice.startsWith(classInSlot.replace(' ', '-'))) {
                             $('#debuff-bleed').css('color', 'green');
-                        } 
+                        }
                     });
 
                     // Add conditions for other classes and buffs
