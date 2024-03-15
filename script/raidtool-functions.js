@@ -423,7 +423,7 @@ $(function () {
                 }
 
                 // Sjekker og håndterer Water Totem valg
-                if (classChoices[choice] === 'Totem of Tranquil Mind' && choicestartsWith(classInSlot.replace(' ', '-'))) {
+                if (classChoices[choice] === 'Totem of Tranquil Mind' && choice.startsWith(classInSlot.replace(' ', '-'))) {
                     $('#buff-spellpushback').css('color', 'green');
                 } else if (classChoices[choice] === 'Mana Spring Totem' && choice.startsWith(classInSlot.replace(' ', '-'))) {
                     $('#buff-mp5').css('color', 'green');
