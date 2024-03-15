@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raidtool</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+    <link rel="stylesheet" href="css/meny.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Buffs and Debuffs</title>
+    <Style>
+        body {
+            
+            
+            
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            /* Samme farge som menyen */
+            color: white;
+            /* Endre tekstfarge for bedre lesbarhet */
+            padding-top: 40px;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        ul {
+            width: 40%; /* Each list takes up roughly a third of the container width */
+            list-style-type: none; /* Removes default bullets */
+        }
+        li {
+            margin-bottom: 1px; /* Adds space between list items */
+        }
+
+    </Style>
+    </head>
+    <body>
+        <nav class="top-menu">
+            <ul>
+                <li><a href="index.html">Raidtool</a></li>
+                <li><a href="buffs.html">Buffs and Debuffs</a></li>
+                <li><a href="bis.html">BIS</a></li>
+                <li><a href="gifflar.html">Gifflar</a></li>
+            </ul>
+        </nav>
+        
+        <div class="container">
+        <ul>
+            <li><strong style="color: green;">10% Melee Speed:</strong> <br>Shamans (Windfury Totem)<br> Frost Death Knights (Improved Icy Talons)<br> Survival Hunters (Hunting Party)</li>
+            <br>
+            <li><strong style="color: green;">5% Crit:</strong> <br>Feral Druids (Leader of the Pack)<br> Elemental Shaman (Elemental Oath)<br> Subtlety Rogues (Honor Among Thieves)<br> Fury Warriors (Rampage)</li>
+            <br>
+            <li><strong style="color: green;">10% Attack Power:</strong> <br>Enhancement Shamans (Unleashed Rage)<br> Marksman Hunter (Trueshot Aura)<br> Blood Death Knights (Abomination's Might)<br> Paladins (Blessing of Might)</li>
+            <br>
+            <li><strong style="color: green;">5% Spell Haste:</strong> <br>Balance Druids (Moonkin Form)<br> Shadow Priests (Shadow Form)<br> Shamans (Wrath of Air Totem)</li>
+            <br>
+            <li><strong style="color: green;">10% Spell Power:</strong> <br>Demonolgy Warlocks (Demonic Pact)<br> Elemental Shamans (Totemic Wrath)</li>
+            <br>
+            <li><strong style="color: green;">6% Spell Power:</strong> <br>Mages (Arcane Brilliance)<br> Shamans (Flametongue Totem)</li>
+            <br>
+            <li><strong style="color: green;">3% to all damage:</strong> <br>Arcane Mages (Arcane Tactics)<br> Beast Master Hunters (Ferocious Inspiration)<br> Retribution Paladins (Communion)</li>
+            <br>
+            <li><strong style="color: green;">5% to all base stats:</strong> <br>Druids (Mark of the Wild)<br> Paladins (Blessing of Kings)</li>
+            <br>
+            <li><strong style="color: green;">+Strength and Agility:</strong> <br>Shamans (Strength of Earth Totem)<br> Death Knights (Horn of Winter)<br> Warriors (Battle Shout)</li>
+            <br>
+            <li><strong style="color: green;">Stamina:</strong> <br>Priests (PW:Fortitude)<br> Destruction Warlocks (Imp provides the buff)<br> Warriors (Commanding Shout)</li>
+            <br>
+            <li><strong style="color: green;">Max Mana:</strong> <br>Mages (Arcane Brilliance)<br> Affliction Warlocks (Felhunter)</li>
+            
+            
+        </ul>
+        <ul>
+            <li><strong style="color: green;">Combat Resurrection:</strong> <br>Druids (Rebirth)<br> Warlocks (Soulstone)<br> Shamans (Reincarnation)</li>
+            <br>
+            <li><strong style="color: green;">Major Haste buff:</strong> <br>Shamans (Bloodlust/Heroism)<br> Mages (Time Warp)</li>
+            <br>
+            <li><strong style="color: green;">Armor:</strong> <br>Shamans (Stoneskin Totem)<br> Paladins (Devotion Aura)</li>
+            <br>
+            <li><strong style="color: green;">Minor Spell Resistances:</strong><br>Paladins (Blessing of Kings)<br>Druids (Mark of the Wild)</li>
+            <br>
+            <li><strong style="color: green;">Fire Resistance:</strong> <br>Shamans (Elemental Resistance Totem)<br> Paladins (Resistance Aura)</li>
+            <br>
+            <li><strong style="color: green;">Frost Resistance:</strong> <br>Shamans (Elemental Resistance Totem)<br> Paladins (Resistance Aura)</li>
+            <br>
+            <li><strong style="color: green;">Shadow Resistance:</strong> <br>Priests (Shadow Protection)<br> Paladins (Resistance Aura)</li>
+            <br>
+            <li><strong style="color: green;">Nature Resistance:</strong> <br>Shamans (Elemental Resistance Totem)<br> Hunter (Aspect of the Wild)</li>
+            <br>
+            <li><strong style="color: green;">Spell Pushback Resist:</strong> <br>Paladins (Concentration Aura)<br> Shamans (Totem of Tranquil Mind)</li>
+            <br>
+            <li><strong style="color: green;">Minor mana replenishment:</strong> <br>Shadow Priests (Vampiric Touch)<br> Frost Mage (Enduring Winter)<br> Destruction Warlocks (Soul Leach)<br> Restoration Druid (Revitalize)<br> Retribution Paladins (Communion)</li>
+            <br>
+            <li><strong style="color: green;">Major Mana Replenishment:</strong> <br>Druids (Innervate)<br> Restoration Shamans (Mana Tide Totem)<br> Priests (Hymn of Hope)</li>
+            <br>
+            <li><strong style="color: green;">MP5:</strong> <br>Affliction Warlocks (Felhunter provides the buff)<br> Shamans (Mana Spring Totem)<br> Paladins (Blessing of Might)</li>
+        </ul>
+        <ul>
+            <li><strong style="color: red;">Armor Debuff:</strong> <br>Rogues (Expose Armor)<br> Warriors (Sunder Armor)<br> Druids (Faerie Fire/Feral Faerie Fire)</li>
+            <br>
+            <li><strong style="color: red;">30% bleed damage:</strong> <br>Feral Druid (Mangle (Bear)/Mangle (Cat))<br> Subtlety Rogues (Hemorrhage)<br> Arms Warriors (Blood Frenzy)</li>
+            <br>
+            <li><strong style="color: red;">5% crit for spells only:</strong> <br>Fire Mages (Critical Mass)<br> Destuction Warlocks (Shadow and Flame)</li>
+            <br>
+            <li><strong style="color: red;">20% melee haste debuff:</strong> <br>Feral Druids (Infected Wounds)<br> Death Knights (Frost Fever)<br> Protection Paladins (Judgements of the Just)<br> Protection Warriors (Thunder Clap)<br> Shamans (Earth Shock)</li>
+            <br>
+            <li><strong style="color: red;">8% magic damage taken debuff:</strong> <br>Warlocks (Curse of the Elements)<br> Balance Druids (Earth and Moon)<br> Unholy Death Knights (Ebon Plaguebringer)<br> Assassination Rogues (Master Poisoner)</li>
+            <br>
+            <li><strong style="color: red;">4% physical damage taken debuff:</strong> <br>Combat Rogue (Savage Combat)<br> Frost Death Knights (Brittle Bones)<br> Arms Warriors (Blood Frenzy)</li>
+            <br>
+            <li><strong style="color: red;">Healing Debuff:</strong> <br>Rogues (Wound Poison)<br> Arms Warriors (Mortal Strike)<br> Fury Warriors (Furious Attacks)<br> Hunters (Widow Venom)<br> Shadow Priests (Improved Mind Blast)<br> Demonology Warlocks (Felguard's Legion Strike)</li>
+            <br>
+            <li><strong style="color: red;">10% physical damage output debuff:</strong> <br>Warlocks (Curse of Weakness)<br> Feral Druids (Demoralizing Roar)<br> Blood Death Knights (Scarlet Fever)<br> Protection Paladins (Vindication)<br> Warriors (Demoralizing Shout)</li>
+            <br>
+            <li><strong style="color: red;">Cast Speed debuff:</strong> <br>Warlocks (Curse of Tongues)<br> Arcane Mages (Slow)<br> Rogues (Mind-Numbing Poison)<br> Death Knights (Necrotic Strike)</li>
+        </ul>
+    </div>
+            
+        
+    
+
+    </body>
+</html>
