@@ -370,6 +370,7 @@ $(function () {
             }
             if (classInSlot === 'Elemental Shaman') {
                 $('#buff-crit').css('color', 'green');
+                $('#buff-spellpwr').css('color', 'green');
                 $('#buff-majorhaste').css('color', 'green');
                 $('#debuff-melee-haste').css('color', 'green');
             }
