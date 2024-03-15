@@ -12,10 +12,183 @@ $(function () {
         'Protection Warrior': 0,
         'Marksman Hunter': 0,
         'Survival Hunter': 0,
-        'Beastmaster Hunter': 0
+        'Beastmaster Hunter': 0,
+        'Assassin Rogue': 0,
+        'Combat Rogue': 0,
+        'Sublety Rogue': 0
 
     };
+    let classCount2 = {
+        'enhancement-shaman': 0,
+        'elemental-shaman': 0,
+        'restoration-shaman': 0,
+        'retribution-paladin': 0,
+        'holy-paladin': 0,
+        'protection-paladin': 0,
+        'fury-warrior': 0,
+        'arms-warrior': 0,
+        'protection-warrior': 0,
+        'marksman-hunter': 0,
+        'survival-hunter': 0,
+        'beastmaster-hunter': 0,
+        'assassination-rogue': 0,
+        'combat-rogue': 0,
+        'subtlety-rogue': 0,
+        'balance-druid': 0,
+        'feral-druid': 0,
+        'restoration-druid': 0,
+        'affliction-warlock': 0,
+        'demonology-warlock': 0,
+        'destruction-warlock': 0,
+        'fire-mage': 0,
+        'arcane-mage': 0,
+        'frost-mage': 0,
+        'shadow-priest': 0,
+        'discipline-priest': 0,
+        'holy-priest': 0,
+        'frost-death-knight': 0,
+        'unholy-death-knight': 0,
+        'blood-death-knight': 0
+    };
+    let playerRoles = {
+        'Tank': 0,
+        'Healer': 0,
+        'Melee DPS': 0,
+        'Ranged DPS': 0
+    }
+    let gearTypes = {
+        'Cloth': 0,
+        'Leather': 0,
+        'Mail': 0,
+        'Plate': 0
+    }
+    let tierTokens = {
+        'Conqueror': 0,
+        'Protector': 0,
+        'Vanquisher': 0
+    }
+    function updateCounts() {
+        // Oppdaterer spillerroller
+        let playerRolesHtml = '';
+        for (const [role, count] of Object.entries(playerRoles)) {
+            playerRolesHtml += `<div>${role}: ${count}</div>`;
+        }
+        $('#player-counts').html(playerRolesHtml);
     
+        // Oppdaterer utstyrstyper
+        let gearTypesHtml = '';
+        for (const [type, count] of Object.entries(gearTypes)) {
+            gearTypesHtml += `<div>${type}: ${count}</div>`;
+        }
+        $('#gear-types').html(gearTypesHtml);
+    
+        // Oppdaterer tier tokens
+        let tierTokensHtml = '';
+        for (const [token, count] of Object.entries(tierTokens)) {
+            tierTokensHtml += `<div>${token}: ${count}</div>`;
+        }
+        $('#tier-tokens').html(tierTokensHtml);
+    }
+    
+    // Funksjon for å legge til en klasse
+    function addClass(className) {
+        // Definer klasser og deres egenskaper
+        const classProperties = {
+            'elemental-shaman': { role: 'Ranged DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'restoration-shaman': { role: 'Healer', gearType: 'Mail', tierToken: 'Protector' },
+            'enhancement-shaman': { role: 'Melee DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'retribution-paladin': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Conqueror' },
+            'holy-paladin': { role: 'Healer', gearType: 'Plate', tierToken: 'Conqueror' },
+            'protection-paladin': { role: 'Tank', gearType: 'Plate', tierToken: 'Conqueror' },
+            'fury-warrior': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Protector' },
+            'arms-warrior': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Protector' },
+            'protection-warrior': { role: 'Tank', gearType: 'Plate', tierToken: 'Protector' },
+            'marksman-hunter': { role: 'Ranged DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'survival-hunter': { role: 'Ranged DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'beastmaster-hunter': { role: 'Ranged DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'assassination-rogue': { role: 'Melee DPS', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'combat-rogue': { role: 'Melee DPS', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'subtlety-rogue': { role: 'Melee DPS', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'balance-druid': { role: 'Ranged DPS', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'feral-druid': { role: 'Tank', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'restoration-druid': { role: 'Healer', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'affliction-warlock': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'demonology-warlock': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'destruction-warlock': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'fire-mage': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Vanquisher' },
+            'arcane-mage': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Vanquisher' },
+            'frost-mage': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Vanquisher' },
+            'shadow-priest': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'discipline-priest': { role: 'Healer', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'holy-priest': { role: 'Healer', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'frost-death-knight': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Vanquisher' },
+            'unholy-death-knight': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Vanquisher' },
+            'blood-death-knight': { role: 'Tank', gearType: 'Plate', tierToken: 'Vanquisher' }
+            // Legg til flere klasser her etter behov
+        };
+    
+        // Sjekk om klassen er definert
+        if (classProperties[className]) {
+            const properties = classProperties[className];
+            // Oppdater spillerroller, utstyrstyper og tier tokens
+            playerRoles[properties.role]++;
+            gearTypes[properties.gearType]++;
+            tierTokens[properties.tierToken]++;
+    
+            // Oppdater visningen
+            updateCounts();
+        }
+    }
+    
+    // Funksjon for å fjerne en klasse
+    function removeClass(className) {
+        // Definer klasser og deres egenskaper
+        const classProperties = {
+            'elemental-shaman': { role: 'Ranged DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'restoration-shaman': { role: 'Healer', gearType: 'Mail', tierToken: 'Protector' },
+            'enhancement-shaman': { role: 'Melee DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'retribution-paladin': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Conqueror' },
+            'holy-paladin': { role: 'Healer', gearType: 'Plate', tierToken: 'Conqueror' },
+            'protection-paladin': { role: 'Tank', gearType: 'Plate', tierToken: 'Conqueror' },
+            'fury-warrior': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Protector' },
+            'arms-warrior': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Protector' },
+            'protection-warrior': { role: 'Tank', gearType: 'Plate', tierToken: 'Protector' },
+            'marksman-hunter': { role: 'Ranged DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'survival-hunter': { role: 'Ranged DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'beastmaster-hunter': { role: 'Ranged DPS', gearType: 'Mail', tierToken: 'Protector' },
+            'assassination-rogue': { role: 'Melee DPS', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'combat-rogue': { role: 'Melee DPS', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'subtlety-rogue': { role: 'Melee DPS', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'balance-druid': { role: 'Ranged DPS', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'feral-druid': { role: 'Tank', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'restoration-druid': { role: 'Healer', gearType: 'Leather', tierToken: 'Vanquisher' },
+            'affliction-warlock': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'demonology-warlock': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'destruction-warlock': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'fire-mage': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Vanquisher' },
+            'arcane-mage': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Vanquisher' },
+            'frost-mage': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Vanquisher' },
+            'shadow-priest': { role: 'Ranged DPS', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'discipline-priest': { role: 'Healer', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'holy-priest': { role: 'Healer', gearType: 'Cloth', tierToken: 'Conqueror' },
+            'frost-death-knight': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Vanquisher' },
+            'unholy-death-knight': { role: 'Melee DPS', gearType: 'Plate', tierToken: 'Vanquisher' },
+            'blood-death-knight': { role: 'Tank', gearType: 'Plate', tierToken: 'Vanquisher' }
+            // Legg til flere klasser her etter behov
+        };
+    
+        // Sjekk om klassen er definert
+        if (classProperties[className]) {
+            const properties = classProperties[className];
+            // Oppdater spillerroller, utstyrstyper og tier tokens
+            playerRoles[properties.role]--;
+            gearTypes[properties.gearType]--;
+            tierTokens[properties.tierToken]--;
+    
+            // Oppdater visningen
+            updateCounts();
+        }
+    }
 
     // Objekt for å holde styr på spesifikke klasser valg som shouts og blessings
     let classChoices = {};
@@ -23,12 +196,16 @@ $(function () {
     for (let i = 1; i <= 25; i++) {
         $('<div class="raid-slot">' + i + '</div>').click(function () {
             const classToRemove = $(this).data('class');
+            const classSlugRemove = classToRemove.replace(/\s+/g, '-').toLowerCase()
             if (classToRemove) {
                 removeClassChoices(classToRemove);
                 classCount[classToRemove]--;
+                classCount2[classSlugRemove]--;
+                removeClass(classSlugRemove);
                 $(this).removeData('class').empty().append(i);
                 updateClassOptions();
                 updateBuffs();
+                console.log(classCount2)
             }
         }).appendTo('#raid-slots');
     }
@@ -64,8 +241,11 @@ $(function () {
                     .empty()
                     .append($('<div>').addClass('class-container-cloned ' + classSlug).text(classToAdd)); // Legger til den spesifikke fargeklassen
                 classCount[classToAdd]++;
+                classCount2[classSlug]++;
+                addClass(classSlug);
                 updateClassOptions();
                 updateBuffs();
+                console.log(classCount2)
                 return false;
             }
         });

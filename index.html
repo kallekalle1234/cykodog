@@ -15,6 +15,7 @@
         body {
             display: flex;
             justify-content: space-between;
+            
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -81,6 +82,25 @@
         body {
             padding-top: 65px;
         }
+        #player-info {
+    display: flex; /* Aktiverer flexbox for denne konteineren */
+    justify-content: space-between; /* Fordeler mellomrommet jevnt mellom og rundt innholdet */
+    align-items: center; /* Midtstiller elementene vertikalt */
+    position: absolute;
+    bottom: 100px;
+    margin-left: 0px;
+
+    
+    
+}
+
+#player-info > div {
+    
+    white-space: nowrap; /* Forhindrer tekst fra å bryte til en ny linje */
+    flex: 2; /* Gjør at alle barna (divs for counts, types, og tokens) tar lik bredde */
+    padding: 0 25px; /* Legger til litt plassering på innsiden av hvert barn */
+    box-sizing: border-box; /* Sørger for at padding er inkludert i bredden */
+}
 
         /* Media query for mobile devices */
 @media (max-width: 768px) {
@@ -104,6 +124,7 @@
 
   
 }
+        
     </style>
 </head>
 
@@ -217,8 +238,25 @@
         </div>
     </div>
 
+    <div id="player-info">
+        <div id="player-counts">
+            <h3></h3>
+            <!-- Dynamisk innhold kommer her -->
+        </div>
+        <div id="gear-types">
+            <h3></h3>
+            <!-- Dynamisk innhold kommer her -->
+        </div>
+        <div id="tier-tokens">
+            <h3></h3>
+            <!-- Dynamisk innhold kommer her -->
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script/raidtool-functions.js"></script>
+
+    
 </body>
 
 </html>
