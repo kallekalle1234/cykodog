@@ -74,14 +74,14 @@ $(function () {
             playerRolesHtml += `<div>${role}: ${count}</div>`;
         }
         $('#player-counts').html(playerRolesHtml);
-    
+
         // Oppdaterer utstyrstyper
         let gearTypesHtml = '';
         for (const [type, count] of Object.entries(gearTypes)) {
             gearTypesHtml += `<div>${type}: ${count}</div>`;
         }
         $('#gear-types').html(gearTypesHtml);
-    
+
         // Oppdaterer tier tokens
         let tierTokensHtml = '';
         for (const [token, count] of Object.entries(tierTokens)) {
@@ -89,7 +89,7 @@ $(function () {
         }
         $('#tier-tokens').html(tierTokensHtml);
     }
-    
+
     // Funksjon for å legge til en klasse
     function addClass(className) {
         // Definer klasser og deres egenskaper
@@ -126,7 +126,7 @@ $(function () {
             'blood-death-knight': { role: 'Tank', gearType: 'Plate', tierToken: 'Vanquisher' }
             // Legg til flere klasser her etter behov
         };
-    
+
         // Sjekk om klassen er definert
         if (classProperties[className]) {
             const properties = classProperties[className];
@@ -134,12 +134,12 @@ $(function () {
             playerRoles[properties.role]++;
             gearTypes[properties.gearType]++;
             tierTokens[properties.tierToken]++;
-    
+
             // Oppdater visningen
             updateCounts();
         }
     }
-    
+
     // Funksjon for å fjerne en klasse
     function removeClass(className) {
         // Definer klasser og deres egenskaper
@@ -176,7 +176,7 @@ $(function () {
             'blood-death-knight': { role: 'Tank', gearType: 'Plate', tierToken: 'Vanquisher' }
             // Legg til flere klasser her etter behov
         };
-    
+
         // Sjekk om klassen er definert
         if (classProperties[className]) {
             const properties = classProperties[className];
@@ -184,7 +184,7 @@ $(function () {
             playerRoles[properties.role]--;
             gearTypes[properties.gearType]--;
             tierTokens[properties.tierToken]--;
-    
+
             // Oppdater visningen
             updateCounts();
         }

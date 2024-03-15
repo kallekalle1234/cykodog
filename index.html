@@ -15,7 +15,7 @@
         body {
             display: flex;
             justify-content: space-between;
-            
+
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -82,49 +82,66 @@
         body {
             padding-top: 65px;
         }
+
         #player-info {
-    display: flex; /* Aktiverer flexbox for denne konteineren */
-    justify-content: space-between; /* Fordeler mellomrommet jevnt mellom og rundt innholdet */
-    align-items: center; /* Midtstiller elementene vertikalt */
-    position: absolute;
-    bottom: 140px;
-    margin-left: 0px;
+            display: flex;
+            /* Aktiverer flexbox for denne konteineren */
+            justify-content: space-between;
+            /* Fordeler mellomrommet jevnt mellom og rundt innholdet */
+            align-items: center;
+            /* Midtstiller elementene vertikalt */
+            position: absolute;
+            bottom: 140px;
+            margin-left: 0px;
 
-    
-    
-}
 
-#player-info > div {
-    
-    white-space: nowrap; /* Forhindrer tekst fra å bryte til en ny linje */
-    flex: 2; /* Gjør at alle barna (divs for counts, types, og tokens) tar lik bredde */
-    padding: 0 25px; /* Legger til litt plassering på innsiden av hvert barn */
-    box-sizing: border-box; /* Sørger for at padding er inkludert i bredden */
-}
+
+        }
+
+        #player-info>div {
+
+            white-space: nowrap;
+            /* Forhindrer tekst fra å bryte til en ny linje */
+            flex: 2;
+            /* Gjør at alle barna (divs for counts, types, og tokens) tar lik bredde */
+            padding: 0 25px;
+            /* Legger til litt plassering på innsiden av hvert barn */
+            box-sizing: border-box;
+            /* Sørger for at padding er inkludert i bredden */
+        }
 
         /* Media query for mobile devices */
-@media (max-width: 768px) {
-  #raid-container {
-    width: 100%;
-    margin: 0;
-    padding: 0 2px; /* Juster padding for å ikke presse innholdet for mye mot kantene */
-  }
+        @media (max-width: 768px) {
+            #raid-container {
+                width: 100%;
+                margin: 0;
+                padding: 0 2px;
+                /* Juster padding for å ikke presse innholdet for mye mot kantene */
+            }
 
-  .class-container, .raid-slot {
-    width: 100px; /* Tilpass bredde basert på skjermstørrelsen */
-    height: 45px; /* Tilpass høyden basert på skjermstørrelsen */
-    margin: 5px 0; /* Øk mellomrom mellom elementene for bedre lesbarhet */
-  }
+            .class-container,
+            .raid-slot {
+                width: 100px;
+                /* Tilpass bredde basert på skjermstørrelsen */
+                height: 45px;
+                /* Tilpass høyden basert på skjermstørrelsen */
+                margin: 5px 0;
+                /* Øk mellomrom mellom elementene for bedre lesbarhet */
+            }
 
-  #buff-list, #debuff-list, #class-options-list {
-    width: 100%; /* Gjør disse elementene full bredde */
-    margin-left: 0; /* Fjern margin til venstre for å sentrere innholdet */
-    padding: 10px 0; /* Tilføy padding for bedre lesbarhet */
-  }
+            #buff-list,
+            #debuff-list,
+            #class-options-list {
+                width: 100%;
+                /* Gjør disse elementene full bredde */
+                margin-left: 0;
+                /* Fjern margin til venstre for å sentrere innholdet */
+                padding: 10px 0;
+                /* Tilføy padding for bedre lesbarhet */
+            }
 
-  
-}
-        
+
+        }
     </style>
 </head>
 
@@ -150,7 +167,7 @@
 
             <!-- Druid -->
             <div class="class-container druid" data-class="Balance Druid">Balance Druid</div>
-            <div class="class-container druid" data-class="Feral Druid">Feral Druid</div>   
+            <div class="class-container druid" data-class="Feral Druid">Feral Druid</div>
             <div class="class-container druid" data-class="Restoration Druid">Restoration Druid</div>
 
             <!-- Warlock -->
@@ -256,7 +273,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script/raidtool-functions.js"></script>
 
-    
+
 </body>
 
 </html>
